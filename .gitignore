@@ -1,0 +1,6 @@
+/vendor
+/.idea
+.env
+cache.txt
+database.sqlite
+/.phpunit.cache

@@ -1,0 +1,20 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "runner",
+        "use": "@vercel/php"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/webhook",
+        "dest": "runner"
+      }
+    ],
+    "build": {
+      "env": {
+        "APP_ENV": "production"
+      }
+    }
+  }
