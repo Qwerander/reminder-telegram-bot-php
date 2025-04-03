@@ -16,10 +16,5 @@
         "dest": "/api/poll.php"
       }
     ],
-    "crons": [
-      {
-        "path": "/poll",
-        "schedule": "*/5 * * * *"
-      }
-    ]
+    
   }
