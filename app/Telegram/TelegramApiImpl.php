@@ -100,4 +100,27 @@ class TelegramApiImpl implements TelegramApi
             $this->logger?->error('sendMessage error', ['error' => $e->getMessage()]);
         }
     }
+
+    public function handleWebhook(): void
+{
+    $input = json_decode(file_get_contents('php://input'), true);
+    $chatId = $input['message']['chat']['id'] ?? null;
+    $text = $input['message']['text'] ?? null;
+
+    if ($chatId && $text) {
+        $this->sendMessage($chatId, "Webhook received: $text");
+    }
+}
+
+public function pollUpdates(): void
+{
+    $offset = 0; // В реальном коде сохраняйте offset между запусками
+    $updates = $this->getMessages($offset);
+
+    foreach ($updates['result'] as $chatId => $messages) {
+        foreach ($messages as $text) {
+            $this->sendMessage($chatId, "Poll response: $text");
+        }
+    }
+}
 }

@@ -8,6 +8,8 @@
     "ext-pcntl": "*",
     "ext-pdo": "*",
     "ext-pdo_sqlite": "*",
+    "monolog/monolog": "*",
+    "psr/log": "*",
     "vlucas/phpdotenv": "^5.5"
   },
   "require-dev": {

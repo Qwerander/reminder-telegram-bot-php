@@ -2,19 +2,24 @@
     "version": 2,
     "builds": [
       {
-        "src": "runner",
-        "use": "@vercel/php"
+        "src": "api/*.php",
+        "use": "vercel-php@0.7.0"
       }
     ],
     "routes": [
       {
         "src": "/webhook",
-        "dest": "runner"
+        "dest": "/api/bot.php"
+      },
+      {
+        "src": "/poll",
+        "dest": "/api/poll.php"
       }
     ],
-    "build": {
-      "env": {
-        "APP_ENV": "production"
+    "crons": [
+      {
+        "path": "/poll",
+        "schedule": "*/5 * * * *"
       }
-    }
+    ]
   }
